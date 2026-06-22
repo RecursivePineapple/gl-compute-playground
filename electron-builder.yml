@@ -1,0 +1,14 @@
+appId: com.gl-compute-playground
+productName: GL Compute Playground
+directories:
+  output: dist-release
+files:
+  - out/**
+asar: true
+asarUnpack:
+  - "**/*.node"
+linux:
+  target: AppImage
+  category: Development
+win:
+  target: nsis

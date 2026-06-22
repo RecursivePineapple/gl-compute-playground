@@ -1,0 +1,36 @@
+{
+  "name": "gl-compute-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "package": "electron-builder --config electron-builder.yml"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "@reduxjs/toolkit": "^2.12.0",
+    "@xyflow/react": "^12.11.0",
+    "glfw-n-api": "^0.0.4",
+    "monaco-editor": "^0.55.1",
+    "node-native-gl": "file:./node-native-gl",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-redux": "^9.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^32.3.3",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^5.0.0",
+    "tsc": "^2.0.4",
+    "vite": "^7.3.5"
+  }
+}

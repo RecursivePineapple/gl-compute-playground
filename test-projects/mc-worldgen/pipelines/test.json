@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "buffer-1781992443357-0",
+      "type": "buffer",
+      "bufferId": "buffers/hvNoise",
+      "position": {
+        "x": 48.27621683791912,
+        "y": -55.00025932131541
+      }
+    },
+    {
+      "id": "shader-1781994993987-0",
+      "type": "shader",
+      "shaderId": "shaders/Test",
+      "position": {
+        "x": -255.5,
+        "y": -105.5
+      },
+      "dispatch": {
+        "x": 2,
+        "y": 2,
+        "z": 1
+      },
+      "uniforms": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-1781994997274",
+      "source": "shader-1781994993987-0",
+      "sourceHandle": "binding-0",
+      "target": "buffer-1781992443357-0",
+      "targetHandle": "input"
+    }
+  ]
+}

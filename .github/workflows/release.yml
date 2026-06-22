@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-dev libglew-dev libglfw3-dev
+
+      - name: Install root npm deps
+        run: npm install
+
+      - name: Build node-native-gl
+        working-directory: node-native-gl
+        run: |
+          npm install
+          npm run build
+
+      - name: Build app
+        run: npm run build
+
+      - name: Package app
+        run: npm run package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist-release/*.AppImage
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install root npm deps
+        run: npm install
+
+      - name: Build node-native-gl
+        working-directory: node-native-gl
+        run: |
+          npm install
+          npm run build
+
+      - name: Build app
+        run: npm run build
+
+      - name: Package app
+        run: npm run package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist-release/*.exe

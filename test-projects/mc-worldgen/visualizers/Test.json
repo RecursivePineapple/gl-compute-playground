@@ -1,0 +1,5 @@
+{
+  "script": "function(tessellator, buffers) {\n  tessellator.push([ 0.0,  0.5, 0.0], [0.5, 1.0], [0, 0, 1], [1, 0, 0, 1]);\n  tessellator.push([-0.5, -0.5, 0.0], [0.0, 0.0], [0, 0, 1], [0, 1, 0, 1]);\n  tessellator.push([ 0.5, -0.5, 0.0], [1.0, 0.0], [0, 0, 1], [0, 0, 1, 1]);\n}",
+  "vertexShader": "#version 300 es\nprecision highp float;\nlayout(location = 0) in vec3 aPosition;\nlayout(location = 1) in vec2 aUV;\nlayout(location = 2) in vec3 aNormal;\nlayout(location = 3) in vec4 aColor;\nuniform mat4 uView;\nuniform mat4 uProjection;\nout vec4 vColor;\nvoid main() {\n  gl_Position = uProjection * uView * vec4(aPosition, 1.0);\n  vColor = aColor;\n}",
+  "fragmentShader": "#version 300 es\nprecision highp float;\nin vec4 vColor;\nout vec4 fragColor;\nvoid main() { fragColor = vColor; }"
+}

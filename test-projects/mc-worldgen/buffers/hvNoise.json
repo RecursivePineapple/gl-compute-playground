@@ -1,0 +1,9 @@
+{
+  "dataType": "i32",
+  "dimensions": {
+    "x": 16,
+    "y": 16,
+    "z": 1
+  },
+  "predefinedData": null
+}
