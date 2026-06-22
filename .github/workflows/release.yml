@@ -8,6 +8,8 @@ on:
 jobs:
   build-linux:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,8 +38,6 @@ jobs:
 
       - name: Package app
         run: npm run package
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: softprops/action-gh-release@v2
         with:
@@ -45,6 +45,8 @@ jobs:
 
   build-windows:
     runs-on: windows-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -54,8 +56,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Configure node-gyp for VS 2022
-        run: npm config set msvs_version 2022
+      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Install root npm deps
         run: npm install
@@ -71,8 +72,6 @@ jobs:
 
       - name: Package app
         run: npm run package
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: softprops/action-gh-release@v2
         with:
