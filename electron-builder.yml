@@ -4,6 +4,8 @@ directories:
   output: dist-release
 files:
   - out/**
+  - "node_modules/glfw-n-api/**"
+  - "node_modules/node-native-gl/**"
 asar: true
 asarUnpack:
   - "**/*.node"
